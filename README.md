@@ -6,27 +6,12 @@
 
 ## Contents
 
-<div style="display: flex; gap: 40px;">
-
-<div>
-
 - [Project Goal](#project-goal)
-- [Useful Links](#useful-links)
-- [Disclaimer](#disclaimer)
-
-</div>
-
-<div>
-
 - [CAPTCHA Identification Guide](#captcha-identification-guide)
+- [Useful Links](#useful-links)
 - [Contributing](#contributing)
+- [Disclaimer](#disclaimer)
 - [License](#license)
-
-</div>
-
-</div>
-
-
 
 ### 🎯 Project Goal
 We aim to gather all existing ways to bypass captchas in one place. Our mission:
