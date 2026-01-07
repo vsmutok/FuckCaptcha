@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: max/awesome-lint@v2
+      - uses: max/awesome-lint@v2.0.0
