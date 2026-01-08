@@ -7,6 +7,7 @@ This list contains the best free and paid tools for bypassing different types of
 ## 🆓 Free Tools (Open Source)
   
 ### 🐍 Python Libraries
+
 | Name | Best for | Repository |
 |-------|--------------|-------------|
 | **ddddocr** | Text, Slider, Click | [sml2h3/ddddocr](https://github.com/sml2h3/ddddocr) |
@@ -21,6 +22,7 @@ This list contains the best free and paid tools for bypassing different types of
 | **PaddleOCR** | Complex symbols | [PaddlePaddle/PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) |
   
 ### 🌐 Browser Extensions
+
 | Name | Best for | Repository |
 |-------|--------------|-------------|
 | **Buster** | reCAPTCHA (Audio) | [dessant/buster](https://github.com/dessant/buster) |
@@ -29,9 +31,9 @@ This list contains the best free and paid tools for bypassing different types of
 ---
   
 ## 💰 Paid Services (API)
-  
+
 If free methods don't work, these services provide 99% success rate via API or worker farms.
-  
+
 | Service | Speed | Price per 1000 | Description |
 |--------|-----------|-----------------|------|
 | [**2Captcha**](https://2captcha.com/) | ⚡ Fast | ~$0.5 - $3.0 | Most popular, supports all types. |
@@ -42,6 +44,7 @@ If free methods don't work, these services provide 99% success rate via API or w
 ---
   
 ## 🧠 Machine Learning Models
+
 | Model | Use Case | Link |
 |--------|------|-----------|
 | **YOLOv8** | Object Detection (Grid) | [Ultralytics](https://github.com/ultralytics/ultralytics) |
