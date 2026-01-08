@@ -18,6 +18,7 @@ This is the most common version where the user needs to interact with a widget.
 - Audio tasks for accessibility.
 
 #### How to bypass:
+
 | Tool | Description | Success Rate | Link |
 |------------|------|--------------|-----------|
 | **Buster** | 🔥 Browser extension, solves via audio | 80-95% | [dessant/buster](https://github.com/dessant/buster) |
@@ -40,6 +41,7 @@ Works in the background and evaluates user actions with scores (from 0.0 to 1.0)
 - Analyzes user behavior on the site.
 
 #### How to bypass:
+
 | Tool | Description | Success Rate | Link |
 |------------|------|--------------|-----------|
 | **undetected-chromedriver** | 🔥 Best option, imitates humans | 85-95% | [ultrafunkamsterdam/undetected-chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver) |

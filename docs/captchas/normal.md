@@ -5,13 +5,13 @@
 #### How it looks:
 <img src="../../assets/images/captchas/normal.svg" alt="Normal Captcha" height="200">
 
-#### How to identify: 
+#### How to identify:
 - Distorted, wavy, or scratched text
 - Random letters and numbers
 - Lines or noise overlay
 - Sometimes colored background
 
-#### Free bypass methods: 
+#### Free bypass methods:
 
 | Tool | Description | Success Rate | Link |
 |------|-------------|--------------|------|
@@ -20,6 +20,7 @@
 | **PaddleOCR** | Powerful OCR, great for complex text | 80-95% | [PaddlePaddle/PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) |
 | **Tesseract** | Classic OCR, needs preprocessing | 50-80% | [tesseract-ocr/tesseract](https://github.com/tesseract-ocr/tesseract) |
 | **captcha_trainer** | Train your own model | 95-99% | [kerlomz/captcha_trainer](https://github.com/kerlomz/captcha_trainer) |
+
 ---
 
 #### 💰 Paid alternatives:

@@ -18,6 +18,7 @@
 | **OpenCV** | Find slider position via template matching | 80-95% | [opencv/opencv-python](https://github.com/opencv/opencv-python) |
 | **ddddocr** | Built-in GeeTest support | 75-90% | [sml2h3/ddddocr](https://github.com/sml2h3/ddddocr) |
 | **DrissionPage** | Handles GeeTest interactions well | 80-90% | [g1879/DrissionPage](https://github.com/g1879/DrissionPage) |
+
 ---
 
 #### 💰 Paid alternatives:
