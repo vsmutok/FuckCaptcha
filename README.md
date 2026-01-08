@@ -31,8 +31,8 @@ Click on any CAPTCHA below to see detailed information, complexity levels, and b
 | [**Capy Puzzle**](docs/captchas/capy.md)                                           | [**CutCaptcha**](docs/captchas/cutcaptcha.md)                                      | [**Lemin**](docs/captchas/lemin.md)                                                        | [**Prosopo**](docs/captchas/prosopo.md)                                                        | [**Temu**](docs/captchas/temu.md)                                                  |
 
 ## Useful Links
-- [Bypass Tools](docs/solvers.md) - List of tools and services to bypass CAPTCHAs.
-- [Useful Resources](docs/resources.md) - Additional resources and articles.
+- [Bypass Tools](https://github.com/vsmutok/FuckCaptcha/blob/main/docs/solvers.md) - List of tools and services to bypass CAPTCHAs.
+- [Useful Resources](https://github.com/vsmutok/FuckCaptcha/blob/main/docs/resources.md) - Additional resources and articles.
 
 ### Contributing
 
