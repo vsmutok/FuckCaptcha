@@ -29,7 +29,7 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
-vendor/
+/vendor/
 
 # Python
 __pycache__/

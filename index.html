@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FuckCaptcha — the field guide to 38 CAPTCHA types</title>
+  <meta name="description" content="Identify 38 CAPTCHA types, understand how each one works, and choose a free, open-source or paid solving path. A practical field guide for researchers and engineers.">
+  <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070b12" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FuckCaptcha — every CAPTCHA has a weak spot">
+  <meta property="og:description" content="38 CAPTCHA types documented end to end: detection signals, free and open-source approaches, and paid fallbacks.">
+  <meta property="og:url" content="https://vsmutok.github.io/FuckCaptcha/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>
+    try {
+      const saved = localStorage.getItem("theme");
+      document.documentElement.dataset.theme = saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    } catch (error) {}
+  </script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#library">Skip to the library</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="FuckCaptcha home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5 4 12l5 7M15 5l5 7-5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>FuckCaptcha<span class="brand-dot">.</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#library">Library</a>
+        <a href="guide.html?doc=docs/solvers.md">Solvers</a>
+        <a href="guide.html?doc=docs/resources.md">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button theme-toggle" type="button" aria-label="Switch to light theme">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.4 8.4 0 1 0 20 14.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </button>
+        <a class="github-button" href="https://github.com/vsmutok/FuckCaptcha" target="_blank" rel="noopener" aria-label="View FuckCaptcha on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8A11.2 11.2 0 0 0 .8 12c0 4.95 3.2 9.14 7.66 10.62.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.33-3.78-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.4-1.23.72-1.51-2.49-.28-5.11-1.25-5.11-5.55 0-1.22.43-2.22 1.15-3-.12-.29-.5-1.43.1-2.98 0 0 .94-.3 3.08 1.15a10.6 10.6 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.6 1.55.22 2.69.1 2.98.72.78 1.15 1.78 1.15 3 0 4.31-2.63 5.27-5.13 5.55.4.35.76 1.04.76 2.1v3.12c0 .3.2.65.77.54A11.2 11.2 0 0 0 23.2 12 11.2 11.2 0 0 0 12 .8Z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow">Open CAPTCHA knowledge base</p>
+          <h1 id="hero-title">Every CAPTCHA has a <span>weak spot.</span></h1>
+          <p class="hero-lede">38 challenge types, documented end to end. Identify what you're facing, start with free and open-source methods, and escalate to a paid solver only when the economics make sense.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#library">
+              Browse the library
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="button button-secondary" href="guide.html?doc=docs/solvers.md">Read the solvers</a>
+          </div>
+          <div class="hero-stats" aria-label="Knowledge base statistics">
+            <div class="stat"><strong>38</strong><span>Challenge types</span></div>
+            <div class="stat"><strong>24</strong><span>Risk engines</span></div>
+            <div class="stat"><strong>6</strong><span>Open source</span></div>
+          </div>
+        </div>
+
+        <div class="terminal" aria-label="Example field notes">
+          <div class="terminal-bar" aria-hidden="true">
+            <i></i><i></i><i></i>
+            <span>field-notes.log</span>
+          </div>
+          <pre><code><span class="prompt">$</span> captcha identify --url example.com
+<span class="out">reCAPTCHA v3</span>  <span class="dim">score-based / no widget</span>
+
+<span class="prompt">$</span> captcha recommend
+<span class="good">01</span> warmed browser profile
+<span class="good">02</span> residential IP + real session
+<span class="good">03</span> token API <span class="dim">(paid fallback)</span>
+
+<span class="dim"># verify every assumption before scaling</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="library" aria-labelledby="library-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">The library</p>
+            <h2 id="library-title">38 CAPTCHA types. One field guide.</h2>
+          </div>
+          <p>Each entry covers detection signals, the free path first, and a paid fallback when needed. Use the filters to narrow the list.</p>
+        </div>
+
+        <div class="toolbar">
+          <label class="search">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input id="captcha-search" type="search" placeholder="Search CAPTCHA types..." autocomplete="off" aria-label="Search CAPTCHA types">
+            <kbd>/</kbd>
+          </label>
+          <div class="filters" role="group" aria-label="Filter by category">
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">All <span>38</span></button>
+            <button class="filter" type="button" data-filter="risk" aria-pressed="false">Risk engines <span>24</span></button>
+            <button class="filter" type="button" data-filter="puzzle" aria-pressed="false">Image puzzles <span>13</span></button>
+            <button class="filter" type="button" data-filter="text" aria-pressed="false">Text &amp; audio <span>4</span></button>
+            <button class="filter" type="button" data-filter="open" aria-pressed="false">Open source <span>6</span></button>
+          </div>
+        </div>
+
+        <div class="results-line">
+          <span aria-live="polite"><span id="result-count">38 / 38</span> entries</span>
+          <span>Updated Oct 2026</span>
+        </div>
+
+        <div class="grid" id="captcha-grid">
+        <article class="card" data-tags="text" data-search="Text-based CAPTCHA Distorted text rendered for humans and trivial for modern OCR. Text &amp; audio normal.md">
+          <a href="guide.html?doc=docs/captchas/normal.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/normal.svg" alt="Text-based CAPTCHA illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-text">Text & audio</span>
+                <span class="level" data-level="1">Low</span>
+              </div>
+              <h3>Text-based CAPTCHA</h3>
+              <p>Distorted text rendered for humans and trivial for modern OCR.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="reCAPTCHA v2 Google&#x27;s checkbox and image challenge with strong browser signals. Risk engine recaptcha.md">
+          <a href="guide.html?doc=docs/captchas/recaptcha.md#1-recaptcha-v2">
+            <div class="card-media">
+              <img src="assets/images/captchas/recaptcha-v2.svg" alt="reCAPTCHA v2 illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>reCAPTCHA v2</h3>
+              <p>Google&#x27;s checkbox and image challenge with strong browser signals.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="reCAPTCHA v3 Invisible score-based scoring; no widget is shown to the visitor. Risk engine recaptcha.md">
+          <a href="guide.html?doc=docs/captchas/recaptcha.md#2-recaptcha-v3">
+            <div class="card-media">
+              <img src="assets/images/captchas/recaptcha-v3.svg" alt="reCAPTCHA v3 illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="4">High</span>
+              </div>
+              <h3>reCAPTCHA v3</h3>
+              <p>Invisible score-based scoring; no widget is shown to the visitor.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="reCAPTCHA Enterprise Enterprise risk scoring with account-level signals and custom rules. Risk engine recaptcha.md">
+          <a href="guide.html?doc=docs/captchas/recaptcha.md#3-recaptcha-enterprise">
+            <div class="card-media">
+              <img src="assets/images/captchas/recaptcha-enterprise.svg" alt="reCAPTCHA Enterprise illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="5">Very High</span>
+              </div>
+              <h3>reCAPTCHA Enterprise</h3>
+              <p>Enterprise risk scoring with account-level signals and custom rules.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="Cloudflare Turnstile Privacy-friendly challenge that leans on browser and network reputation. Risk engine cloudflare.md">
+          <a href="guide.html?doc=docs/captchas/cloudflare.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/cloudflare.svg" alt="Cloudflare Turnstile illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Cloudflare Turnstile</h3>
+              <p>Privacy-friendly challenge that leans on browser and network reputation.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk puzzle" data-search="GeeTest Slide, icon and word challenges backed by adaptive risk analysis. Risk engine Image puzzle geetest.md">
+          <a href="guide.html?doc=docs/captchas/geetest.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/geetest.svg" alt="GeeTest illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>GeeTest</h3>
+              <p>Slide, icon and word challenges backed by adaptive risk analysis.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="Arkose Labs Enforcement challenges designed to make automated solving expensive. Risk engine arkose.md">
+          <a href="guide.html?doc=docs/captchas/arkose.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/arkose.svg" alt="Arkose Labs illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="4">High</span>
+              </div>
+              <h3>Arkose Labs</h3>
+              <p>Enforcement challenges designed to make automated solving expensive.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="Amazon WAF AWS bot control with proof-of-work and browser integrity checks. Risk engine aws.md">
+          <a href="guide.html?doc=docs/captchas/aws.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/aws.svg" alt="Amazon WAF illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Amazon WAF</h3>
+              <p>AWS bot control with proof-of-work and browser integrity checks.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="DataDome Device fingerprinting and behavioural scoring with adaptive challenges. Risk engine datadome.md">
+          <a href="guide.html?doc=docs/captchas/datadome.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/datadome-captcha.svg" alt="DataDome illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="5">Very High</span>
+              </div>
+              <h3>DataDome</h3>
+              <p>Device fingerprinting and behavioural scoring with adaptive challenges.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="MTCaptcha Lightweight adaptive CAPTCHA with a mostly invisible default mode. Risk engine mtcaptcha.md">
+          <a href="guide.html?doc=docs/captchas/mtcaptcha.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/mtcaptcha.svg" alt="MTCaptcha illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="2">Below average</span>
+              </div>
+              <h3>MTCaptcha</h3>
+              <p>Lightweight adaptive CAPTCHA with a mostly invisible default mode.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk puzzle" data-search="Tencent Tencent&#x27;s slider and click challenges tied to a Chinese risk ecosystem. Risk engine Image puzzle tencent.md">
+          <a href="guide.html?doc=docs/captchas/tencent.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/tencent.svg" alt="Tencent illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Tencent</h3>
+              <p>Tencent&#x27;s slider and click challenges tied to a Chinese risk ecosystem.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="hCaptcha Privacy-focused image labelling with a large challenge pool. Risk engine hcaptcha.md">
+          <a href="guide.html?doc=docs/captchas/hcaptcha.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/hcaptcha.svg" alt="hCaptcha illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>hCaptcha</h3>
+              <p>Privacy-focused image labelling with a large challenge pool.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="Yandex SmartCaptcha Yandex&#x27;s adaptive challenge with browser and behavioural signals. Risk engine yandex-smartcaptcha.md">
+          <a href="guide.html?doc=docs/captchas/yandex-smartcaptcha.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/yandex-smartcaptcha.svg" alt="Yandex SmartCaptcha illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Yandex SmartCaptcha</h3>
+              <p>Yandex&#x27;s adaptive challenge with browser and behavioural signals.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="VK Captcha VK&#x27;s rotating image grid with aggressive session checks. Risk engine vk.md">
+          <a href="guide.html?doc=docs/captchas/vk.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/vkcaptcha.svg" alt="VK Captcha illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="4">High</span>
+              </div>
+              <h3>VK Captcha</h3>
+              <p>VK&#x27;s rotating image grid with aggressive session checks.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="open" data-search="Cap Self-hosted proof-of-work CAPTCHA with a tiny JavaScript widget. Open source cap.md">
+          <a href="guide.html?doc=docs/captchas/cap.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/cap.svg" alt="Cap illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-open">Open source</span>
+                <span class="level" data-level="1">Low</span>
+              </div>
+              <h3>Cap</h3>
+              <p>Self-hosted proof-of-work CAPTCHA with a tiny JavaScript widget.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk puzzle" data-search="Yidun NetEase&#x27;s slider and click captcha with encrypted telemetry. Risk engine Image puzzle yidun.md">
+          <a href="guide.html?doc=docs/captchas/yidun.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/yidun.svg" alt="Yidun illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Yidun</h3>
+              <p>NetEase&#x27;s slider and click captcha with encrypted telemetry.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk puzzle" data-search="VAPTCHA Chinese slider captcha with device and behaviour scoring. Risk engine Image puzzle vaptcha.md">
+          <a href="guide.html?doc=docs/captchas/vaptcha.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/vaptcha.svg" alt="VAPTCHA illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>VAPTCHA</h3>
+              <p>Chinese slider captcha with device and behaviour scoring.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk puzzle" data-search="Shumei Risk control platform with slider and click challenges. Risk engine Image puzzle shumei.md">
+          <a href="guide.html?doc=docs/captchas/shumei.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/shumei.svg" alt="Shumei illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Shumei</h3>
+              <p>Risk control platform with slider and click challenges.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk puzzle" data-search="Aliyun Alibaba Cloud&#x27;s slider captcha with risk-based fallbacks. Risk engine Image puzzle aliyun.md">
+          <a href="guide.html?doc=docs/captchas/aliyun.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/aliyun.svg" alt="Aliyun illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Aliyun</h3>
+              <p>Alibaba Cloud&#x27;s slider captcha with risk-based fallbacks.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="Imperva Advanced bot management with fingerprinting and occasional challenges. Risk engine imperva.md">
+          <a href="guide.html?doc=docs/captchas/imperva.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/imperva.svg" alt="Imperva illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="5">Very High</span>
+              </div>
+              <h3>Imperva</h3>
+              <p>Advanced bot management with fingerprinting and occasional challenges.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="Kasada Client-side virtualization and telemetry built to resist automation. Risk engine kasada.md">
+          <a href="guide.html?doc=docs/captchas/kasada.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/kasada.svg" alt="Kasada illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="5">Very High</span>
+              </div>
+              <h3>Kasada</h3>
+              <p>Client-side virtualization and telemetry built to resist automation.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="HUMAN Enterprise bot defence with proof-of-work and behavioural checks. Risk engine human.md">
+          <a href="guide.html?doc=docs/captchas/human.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/human.svg" alt="HUMAN illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="5">Very High</span>
+              </div>
+              <h3>HUMAN</h3>
+              <p>Enterprise bot defence with proof-of-work and behavioural checks.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk" data-search="Akamai Bot Manager sensors and adaptive challenges at the edge. Risk engine akamai.md">
+          <a href="guide.html?doc=docs/captchas/akamai.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/akamai.svg" alt="Akamai illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="5">Very High</span>
+              </div>
+              <h3>Akamai</h3>
+              <p>Bot Manager sensors and adaptive challenges at the edge.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="puzzle" data-search="Slider CAPTCHA Drag a piece into place while the page watches the whole gesture. Image puzzle slider.md">
+          <a href="guide.html?doc=docs/captchas/slider.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/slider.svg" alt="Slider CAPTCHA illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-puzzle">Image puzzle</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Slider CAPTCHA</h3>
+              <p>Drag a piece into place while the page watches the whole gesture.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="text" data-search="BotDetect Classic self-hosted text CAPTCHA with audio alternatives. Text &amp; audio botdetect.md">
+          <a href="guide.html?doc=docs/captchas/botdetect.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/botdetect.svg" alt="BotDetect illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-text">Text & audio</span>
+                <span class="level" data-level="1">Low</span>
+              </div>
+              <h3>BotDetect</h3>
+              <p>Classic self-hosted text CAPTCHA with audio alternatives.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="text" data-search="Amazon CAPTCHA The familiar distorted-text challenge used across Amazon properties. Text &amp; audio amazon.md">
+          <a href="guide.html?doc=docs/captchas/amazon.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/amazon.svg" alt="Amazon CAPTCHA illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-text">Text & audio</span>
+                <span class="level" data-level="1">Low</span>
+              </div>
+              <h3>Amazon CAPTCHA</h3>
+              <p>The familiar distorted-text challenge used across Amazon properties.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk puzzle" data-search="Binance Puzzle slider used on Binance login and registration flows. Risk engine Image puzzle binance.md">
+          <a href="guide.html?doc=docs/captchas/binance.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/binance.svg" alt="Binance illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="4">High</span>
+              </div>
+              <h3>Binance</h3>
+              <p>Puzzle slider used on Binance login and registration flows.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk puzzle" data-search="TikTok Rotating image puzzle tied to device and account signals. Risk engine Image puzzle tiktok.md">
+          <a href="guide.html?doc=docs/captchas/tiktok.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/tiktok.svg" alt="TikTok illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="4">High</span>
+              </div>
+              <h3>TikTok</h3>
+              <p>Rotating image puzzle tied to device and account signals.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="text" data-search="Audio CAPTCHA Spoken challenges intended as an accessible alternative. Text &amp; audio audio.md">
+          <a href="guide.html?doc=docs/captchas/audio.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/audio.svg" alt="Audio CAPTCHA illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-text">Text & audio</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Audio CAPTCHA</h3>
+              <p>Spoken challenges intended as an accessible alternative.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="open" data-search="Altcha Open-source proof-of-work widget with a native server verifier. Open source altcha.md">
+          <a href="guide.html?doc=docs/captchas/altcha.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/altcha-captcha.svg" alt="Altcha illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-open">Open source</span>
+                <span class="level" data-level="1">Low</span>
+              </div>
+              <h3>Altcha</h3>
+              <p>Open-source proof-of-work widget with a native server verifier.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="open" data-search="Friendly Captcha Privacy-first proof-of-work challenge from a European provider. Open source friendly.md">
+          <a href="guide.html?doc=docs/captchas/friendly.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/friendly-captcha.svg" alt="Friendly Captcha illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-open">Open source</span>
+                <span class="level" data-level="1">Low</span>
+              </div>
+              <h3>Friendly Captcha</h3>
+              <p>Privacy-first proof-of-work challenge from a European provider.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="open" data-search="ATB CAPTCHA Commercial CAPTCHA with a self-hostable open-source core. Open source atbcaptcha.md">
+          <a href="guide.html?doc=docs/captchas/atbcaptcha.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/atbcaptcha.svg" alt="ATB CAPTCHA illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-open">Open source</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>ATB CAPTCHA</h3>
+              <p>Commercial CAPTCHA with a self-hostable open-source core.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="open" data-search="CaptchaFox Modern privacy-focused challenge with open-source components. Open source captchafox.md">
+          <a href="guide.html?doc=docs/captchas/captchafox.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/captchafox.svg" alt="CaptchaFox illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-open">Open source</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>CaptchaFox</h3>
+              <p>Modern privacy-focused challenge with open-source components.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="puzzle" data-search="Capy Puzzle Small puzzle slider that is friendly to scripted solving. Image puzzle capy.md">
+          <a href="guide.html?doc=docs/captchas/capy.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/capy.svg" alt="Capy Puzzle illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-puzzle">Image puzzle</span>
+                <span class="level" data-level="2">Below average</span>
+              </div>
+              <h3>Capy Puzzle</h3>
+              <p>Small puzzle slider that is friendly to scripted solving.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="puzzle" data-search="CutCaptcha Slider puzzle with server-side verification and lightweight assets. Image puzzle cutcaptcha.md">
+          <a href="guide.html?doc=docs/captchas/cutcaptcha.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/cutcaptcha.svg" alt="CutCaptcha illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-puzzle">Image puzzle</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>CutCaptcha</h3>
+              <p>Slider puzzle with server-side verification and lightweight assets.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="puzzle" data-search="Lemin Image-based puzzle captcha with several challenge layouts. Image puzzle lemin.md">
+          <a href="guide.html?doc=docs/captchas/lemin.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/lemin.svg" alt="Lemin illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-puzzle">Image puzzle</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Lemin</h3>
+              <p>Image-based puzzle captcha with several challenge layouts.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="open" data-search="Prosopo Procaptcha Open-source proof-of-humanity protocol with a hosted option. Open source prosopo.md">
+          <a href="guide.html?doc=docs/captchas/prosopo.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/prosopo-procaptcha.svg" alt="Prosopo Procaptcha illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-open">Open source</span>
+                <span class="level" data-level="3">Medium</span>
+              </div>
+              <h3>Prosopo Procaptcha</h3>
+              <p>Open-source proof-of-humanity protocol with a hosted option.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        <article class="card" data-tags="risk puzzle" data-search="Temu Rotating image and slider challenge used on Temu flows. Risk engine Image puzzle temu.md">
+          <a href="guide.html?doc=docs/captchas/temu.md">
+            <div class="card-media">
+              <img src="assets/images/captchas/temu_captcha.svg" alt="Temu illustration" loading="lazy" width="320" height="160">
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="tag tag-risk">Risk engine</span>
+                <span class="level" data-level="4">High</span>
+              </div>
+              <h3>Temu</h3>
+              <p>Rotating image and slider challenge used on Temu flows.</p>
+              <span class="card-cta">View guide
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+        </div>
+
+        <div class="empty" id="empty-state" hidden>
+          <strong>No matches.</strong>
+          Try a different name or reset the filters.
+          <button class="button button-secondary" id="reset-filters" type="button">Reset filters</button>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="principles-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Operating principles</p>
+            <h2 id="principles-title">Free first. Evidence over guesses.</h2>
+          </div>
+          <p>The guide is built around repeatable research, not a single magic solver or a pile of affiliate links.</p>
+        </div>
+        <div class="principles">
+          <article class="principle">
+            <span>01 / FREE FIRST</span>
+            <h3>Start with open tools</h3>
+            <p>Every page begins with open-source libraries and practical browser methods before it mentions a paid service.</p>
+          </article>
+          <article class="principle">
+            <span>02 / IDENTIFY FIRST</span>
+            <h3>Read the signals</h3>
+            <p>Network requests, cookies and injected scripts reveal more than the screenshot. Identify the vendor before writing code.</p>
+          </article>
+          <article class="principle">
+            <span>03 / STAY ETHICAL</span>
+            <h3>Respect the target</h3>
+            <p>Use this material for education and authorised testing. Honour terms of service, rate limits and privacy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="#top">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 5 4 12l5 7M15 5l5 7-5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>FuckCaptcha<span class="brand-dot">.</span></span>
+          </a>
+          <p>An open field guide to CAPTCHA systems, detection signals and solving strategies. Built for researchers, automation engineers and the incurably curious.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="https://github.com/vsmutok/FuckCaptcha" target="_blank" rel="noopener">GitHub</a>
+          <a href="guide.html?doc=docs/solvers.md">Solvers</a>
+          <a href="guide.html?doc=docs/resources.md">Resources</a>
+          <a href="https://github.com/vsmutok/FuckCaptcha/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+        </nav>
+      </div>
+      <p class="footer-note">Educational and research use only. Respect terms of service, rate limits and privacy.</p>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

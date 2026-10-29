@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guide — FuckCaptcha</title>
+  <meta name="description" content="Read the FuckCaptcha field guide: identification signals, free and open-source bypass methods, and paid alternatives for every CAPTCHA type.">
+  <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070b12" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/guide.css">
+  <script>
+    try {
+      const saved = localStorage.getItem("theme");
+      document.documentElement.dataset.theme = saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    } catch (error) {}
+  </script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#doc">Skip to the guide</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="FuckCaptcha home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5 4 12l5 7M15 5l5 7-5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>FuckCaptcha<span class="brand-dot">.</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#library">Library</a>
+        <a href="guide.html?doc=docs/solvers.md">Solvers</a>
+        <a href="guide.html?doc=docs/resources.md">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark theme">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.4 8.4 0 1 0 20 14.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </button>
+        <a class="github-button" href="https://github.com/vsmutok/FuckCaptcha" target="_blank" rel="noopener" aria-label="View FuckCaptcha on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8A11.2 11.2 0 0 0 .8 12c0 4.95 3.2 9.14 7.66 10.62.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.33-3.78-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.4-1.23.72-1.51-2.49-.28-5.11-1.25-5.11-5.55 0-1.22.43-2.22 1.15-3-.12-.29-.5-1.43.1-2.98 0 0 .94-.3 3.08 1.15a10.6 10.6 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.6 1.55.22 2.69.1 2.98.72.78 1.15 1.78 1.15 3 0 4.31-2.63 5.27-5.13 5.55.4.35.76 1.04.76 2.1v3.12c0 .3.2.65.77.54A11.2 11.2 0 0 0 23.2 12 11.2 11.2 0 0 0 12 .8Z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="guide-main">
+    <div class="wrap guide-layout">
+      <article>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="index.html#library">Library</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <span class="current" id="crumb-current">Guide</span>
+        </nav>
+
+        <div class="doc-actions">
+          <a class="chip-link" id="source-link" href="https://github.com/vsmutok/FuckCaptcha" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8A11.2 11.2 0 0 0 .8 12c0 4.95 3.2 9.14 7.66 10.62.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.33-3.78-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.4-1.23.72-1.51-2.49-.28-5.11-1.25-5.11-5.55 0-1.22.43-2.22 1.15-3-.12-.29-.5-1.43.1-2.98 0 0 .94-.3 3.08 1.15a10.6 10.6 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.6 1.55.22 2.69.1 2.98.72.78 1.15 1.78 1.15 3 0 4.31-2.63 5.27-5.13 5.55.4.35.76 1.04.76 2.1v3.12c0 .3.2.65.77.54A11.2 11.2 0 0 0 23.2 12 11.2 11.2 0 0 0 12 .8Z"/></svg>
+            View source on GitHub
+          </a>
+          <button class="chip-link" id="copy-link" type="button">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M15 9V6.5A2.5 2.5 0 0 0 12.5 4H6.5A2.5 2.5 0 0 0 4 6.5v6A2.5 2.5 0 0 0 6.5 15H9" stroke="currentColor" stroke-width="1.7"/></svg>
+            Copy link
+          </button>
+          <a class="chip-link" href="index.html#library">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            All CAPTCHA types
+          </a>
+        </div>
+
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <ol id="toc-mobile-list"></ol>
+        </details>
+
+        <div id="doc" class="doc" aria-live="polite">
+          <div class="doc-status" id="doc-status">
+            <strong>Loading guide...</strong>
+            Reading the markdown file from the repository.
+          </div>
+        </div>
+      </article>
+
+      <aside class="toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ol id="toc-list"></ol>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 5 4 12l5 7M15 5l5 7-5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>FuckCaptcha<span class="brand-dot">.</span></span>
+          </a>
+          <p>An open field guide to CAPTCHA systems, detection signals and solving strategies. Built for researchers, automation engineers and the incurably curious.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="https://github.com/vsmutok/FuckCaptcha" target="_blank" rel="noopener">GitHub</a>
+          <a href="guide.html?doc=docs/solvers.md">Solvers</a>
+          <a href="guide.html?doc=docs/resources.md">Resources</a>
+          <a href="https://github.com/vsmutok/FuckCaptcha/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+        </nav>
+      </div>
+      <p class="footer-note">Educational and research use only. Respect terms of service, rate limits and privacy.</p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/marked.min.js" defer></script>
+  <script src="assets/site.js" defer></script>
+  <script src="assets/guide.js" defer></script>
+</body>
+</html>
