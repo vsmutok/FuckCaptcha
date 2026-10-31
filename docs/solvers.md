@@ -90,6 +90,7 @@ Token services solve the challenge on their infrastructure and return a token/an
 | [**YesCaptcha**](https://yescaptcha.com/) | reCAPTCHA/Turnstile/hCaptcha | varies | Popular in the scraping community |
 | [**NopeCHA**](https://www.nopecha.com/) | Turnstile, reCAPTCHA, hCaptcha | subscription | Extension + API |
 | [**SadCaptcha**](https://sadcaptcha.com/) | TikTok/Temu-specific puzzles | varies | Specialised, not general-purpose |
+| [**NoneCap**](https://nonecap.com/) | hCaptcha, including Enterprise | varies | hCaptcha-only token API; SDKs for Node.js and Python |
 
 ### 🌐 Unblocker / Browser APIs
 
