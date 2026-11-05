@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <title>FuckCaptcha — every CAPTCHA has a weak spot</title>
+  <defs>
+    <linearGradient id="sp-brand" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0066ff"/>
+      <stop offset="1" stop-color="#00a6c4"/>
+    </linearGradient>
+    <linearGradient id="sp-accent" x1="96" y1="0" x2="520" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5b9dff"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="sp-head" x1="872" y1="0" x2="1180" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0066ff"/>
+      <stop offset="1" stop-color="#00a6c4"/>
+    </linearGradient>
+    <radialGradient id="sp-glow-a" cx="1060" cy="120" r="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5b9dff" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#5b9dff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sp-glow-b" cx="160" cy="640" r="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sp-grid-fade" cx="900" cy="300" r="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="sp-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#1d2b40" stroke-width="1"/>
+    </pattern>
+    <mask id="sp-grid-mask">
+      <rect width="1280" height="640" fill="url(#sp-grid-fade)"/>
+    </mask>
+    <g id="sp-tick">
+      <circle r="13" fill="#22d3ee"/>
+      <path d="M-6 0l4 4 8-9" fill="none" stroke="#070b12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </defs>
+
+  <rect width="1280" height="640" fill="#070b12"/>
+  <rect width="1280" height="640" fill="url(#sp-grid)" mask="url(#sp-grid-mask)" opacity=".7"/>
+  <rect width="1280" height="640" fill="url(#sp-glow-a)"/>
+  <rect width="1280" height="640" fill="url(#sp-glow-b)"/>
+
+  <g transform="translate(96 88) scale(.140625)">
+    <rect width="512" height="512" rx="120" fill="url(#sp-brand)"/>
+    <path d="M188 136 96 256l92 120M324 136l92 120-92 120" fill="none" stroke="#fff" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M206 262l40 40 64-92" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/>
+  </g>
+  <text x="182" y="137" font-family="Inter, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="38" font-weight="800" letter-spacing="-1" fill="#e8eefb">FuckCaptcha<tspan fill="#22d3ee">.</tspan></text>
+
+  <text x="96" y="262" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" letter-spacing="4" fill="#8bb8ff">OPEN CAPTCHA KNOWLEDGE BASE</text>
+  <g font-family="Inter, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="62" font-weight="800" letter-spacing="-2">
+    <text x="92" y="336" fill="#e8eefb">Every CAPTCHA</text>
+    <text x="92" y="410" fill="#e8eefb">has a <tspan fill="url(#sp-accent)">weak spot.</tspan></text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="19" fill="#e8eefb">
+    <rect x="96" y="452" width="232" height="44" rx="22" fill="#0c1421" stroke="#1d2b40" stroke-width="2"/>
+    <text x="212" y="480" text-anchor="middle"><tspan fill="#22d3ee" font-weight="700">38</tspan> CAPTCHA types</text>
+    <rect x="340" y="452" width="220" height="44" rx="22" fill="#0c1421" stroke="#1d2b40" stroke-width="2"/>
+    <text x="450" y="480" text-anchor="middle"><tspan fill="#22d3ee" font-weight="700">24</tspan> risk engines</text>
+    <rect x="572" y="452" width="200" height="44" rx="22" fill="#0c1421" stroke="#1d2b40" stroke-width="2"/>
+    <text x="672" y="480" text-anchor="middle">free <tspan fill="#22d3ee">→</tspan> paid</text>
+  </g>
+
+  <text x="96" y="566" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#93a4bd"><tspan fill="#5b9dff">$</tspan> open vsmutok.github.io/FuckCaptcha</text>
+
+  <g transform="rotate(3 1026 360)">
+    <rect x="852" y="104" width="348" height="492" rx="22" fill="#0c1421" stroke="#1d2b40" stroke-width="2"/>
+    <rect x="872" y="124" width="308" height="72" rx="12" fill="url(#sp-head)"/>
+    <text x="892" y="153" font-family="Inter, 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif" font-size="17" fill="#fff" opacity=".9">Select all squares with</text>
+    <text x="892" y="181" font-family="Inter, 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#fff">weak spots</text>
+
+    <g fill="#101b2b">
+      <rect x="872" y="212" width="96" height="96" rx="10"/>
+      <rect x="978" y="212" width="96" height="96" rx="10"/>
+      <rect x="1084" y="212" width="96" height="96" rx="10"/>
+      <rect x="872" y="318" width="96" height="96" rx="10"/>
+      <rect x="978" y="318" width="96" height="96" rx="10"/>
+      <rect x="1084" y="318" width="96" height="96" rx="10"/>
+      <rect x="872" y="424" width="96" height="96" rx="10"/>
+      <rect x="978" y="424" width="96" height="96" rx="10"/>
+      <rect x="1084" y="424" width="96" height="96" rx="10"/>
+    </g>
+    <g fill="none" stroke="#1d2b40" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M884 290l24-30 18 20 14-14 18 24"/>
+      <circle cx="1132" cy="260" r="22"/>
+      <path d="M884 360h72M884 376h50M884 392h62"/>
+      <path d="M1100 340l32 22-32 22M1164 340l-32 22 32 22"/>
+      <path d="M896 448h48v48h-48z"/>
+      <path d="M1100 500c18-44 46-44 64 0"/>
+    </g>
+    <g fill="none" stroke="#5b9dff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+      <path d="M998 236h56v48h-56zM1008 252h36M1008 266h24"/>
+      <path d="M1026 342v48M1002 366h48"/>
+      <path d="M998 454l56 40M1054 454l-56 40"/>
+    </g>
+    <g fill="none" stroke="#22d3ee" stroke-width="4">
+      <rect x="978" y="212" width="96" height="96" rx="10"/>
+      <rect x="978" y="318" width="96" height="96" rx="10"/>
+      <rect x="978" y="424" width="96" height="96" rx="10"/>
+    </g>
+    <use href="#sp-tick" x="992" y="226"/>
+    <use href="#sp-tick" x="992" y="332"/>
+    <use href="#sp-tick" x="992" y="438"/>
+
+    <rect x="872" y="540" width="34" height="34" rx="8" fill="url(#sp-head)"/>
+    <path d="M880 557l6 6 12-14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="920" y="564" font-family="Inter, 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif" font-size="19" font-weight="600" fill="#e8eefb">I'm not a robot</text>
+    <text x="1180" y="564" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#22d3ee">solved</text>
+  </g>
+</svg>

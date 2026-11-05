@@ -11,8 +11,14 @@
   <meta property="og:title" content="FuckCaptcha — every CAPTCHA has a weak spot">
   <meta property="og:description" content="38 CAPTCHA types documented end to end: detection signals, free and open-source approaches, and paid fallbacks.">
   <meta property="og:url" content="https://vsmutok.github.io/FuckCaptcha/">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://vsmutok.github.io/FuckCaptcha/assets/brand/social-preview-light.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="FuckCaptcha — every CAPTCHA has a weak spot">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://vsmutok.github.io/FuckCaptcha/assets/brand/social-preview-light.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/brand/logo-mark.png">
   <link rel="stylesheet" href="assets/site.css">
   <script>
     try {
@@ -27,9 +33,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="#top" aria-label="FuckCaptcha home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5 4 12l5 7M15 5l5 7-5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <img class="brand-mark" src="assets/brand/logo-mark.png" alt="" width="32" height="32">
         <span>FuckCaptcha<span class="brand-dot">.</span></span>
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -54,6 +58,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-inner">
         <div>
+          <img class="hero-logo" src="assets/brand/logo-mark.png" alt="" width="64" height="64">
           <p class="eyebrow">Open CAPTCHA knowledge base</p>
           <h1 id="hero-title">Every CAPTCHA has a <span>weak spot.</span></h1>
           <p class="hero-lede">38 challenge types, documented end to end. Identify what you're facing, start with free and open-source methods, and escalate to a paid solver only when the economics make sense.</p>
@@ -814,6 +819,43 @@
       </div>
     </section>
 
+    <section class="section" aria-labelledby="approach-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">A practical field guide</p>
+            <h2 id="approach-title">Understand the challenge. Choose responsibly.</h2>
+          </div>
+          <p>Start with context and evidence, then compare documented options with their trade-offs and limits.</p>
+        </div>
+        <div class="work-steps">
+          <article class="work-step">
+            <span>01 / IDENTIFY</span>
+            <h3>Recognize what you’re seeing</h3>
+            <p>Browse concise profiles of CAPTCHA types, their common formats and the signals that distinguish them.</p>
+          </article>
+          <article class="work-step">
+            <span>02 / COMPARE</span>
+            <h3>Review the available paths</h3>
+            <p>Explore documented open-source projects and service options, with practical trade-offs called out.</p>
+          </article>
+          <article class="work-step">
+            <span>03 / USE RESPONSIBLY</span>
+            <h3>Keep permission in scope</h3>
+            <p>Use this reference for learning and authorized testing; respect privacy, site rules and applicable law.</p>
+          </article>
+        </div>
+        <div class="difficulty-legend" aria-label="Challenge difficulty scale">
+          <strong>Challenge difficulty</strong>
+          <span class="level" data-level="1">Low</span>
+          <span class="level" data-level="2">Below average</span>
+          <span class="level" data-level="3">Medium</span>
+          <span class="level" data-level="4">High</span>
+          <span class="level" data-level="5">Very high</span>
+        </div>
+      </div>
+    </section>
+
     <section aria-labelledby="principles-title">
       <div class="wrap">
         <div class="section-head">
@@ -842,6 +884,19 @@
         </div>
       </div>
     </section>
+
+    <section class="wrap" aria-labelledby="contribute-title">
+      <div class="cta-band">
+        <div class="cta-band-main">
+          <img class="cta-band-logo" src="assets/brand/logo-mark.png" alt="" width="72" height="72" loading="lazy">
+          <div>
+            <h2 id="contribute-title">Help keep the guide useful.</h2>
+            <p>Found a missing reference or an outdated detail? Contributions help make this knowledge base clearer and more responsible.</p>
+          </div>
+        </div>
+        <a class="button button-primary" href="https://github.com/vsmutok/FuckCaptcha/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">How to contribute</a>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -849,9 +904,7 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <a class="brand" href="#top">
-            <span class="brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M9 5 4 12l5 7M15 5l5 7-5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
+            <img class="brand-mark" src="assets/brand/logo-mark.png" alt="" width="32" height="32">
             <span>FuckCaptcha<span class="brand-dot">.</span></span>
           </a>
           <p>An open field guide to CAPTCHA systems, detection signals and solving strategies. Built for researchers, automation engineers and the incurably curious.</p>

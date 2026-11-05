@@ -7,26 +7,40 @@
 [![Last commit](https://img.shields.io/github/last-commit/vsmutok/FuckCaptcha)](https://github.com/vsmutok/FuckCaptcha/commits/main)
 [![Contributors](https://img.shields.io/github/contributors/vsmutok/FuckCaptcha)](https://github.com/vsmutok/FuckCaptcha/graphs/contributors)
 
-**FuckCaptcha** is an open database dedicated to identification methods and bypass techniques for various types of CAPTCHA.
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/brand/readme-banner-light.png">
+  <img src="assets/brand/readme-banner.png" alt="FuckCaptcha — the field guide to 38 CAPTCHA types">
+</picture>
 
-**[Browse the interactive guide →](https://vsmutok.github.io/FuckCaptcha/)**
+**FuckCaptcha** is an open reference for understanding CAPTCHA types, their context and the approaches documented around them. It is intended for education and authorized research, not for evading protections on services without permission.
+
+**[Browse the interactive field guide →](https://vsmutok.github.io/FuckCaptcha/)**
 
 ## Contents
 
 - [Project Goal](#project-goal)
+- [How to Use the Guide](#how-to-use-the-guide)
 - [CAPTCHA Identification](#captcha-identification)
+- [Difficulty Scale](#difficulty-scale)
+- [Project Structure](#project-structure)
 - [Useful Links](#useful-links)
 
 ---
 ## Project Goal
-We aim to gather all existing ways to bypass captchas in one place.  Our mission:
-- 🆓 **Free Methods**: Collect and maintain an up-to-date list of open-source tools and libraries.
-- 💰 **Paid Alternatives**: Provide information about effective paid services for solving complex tasks.
-- 🧠 **Knowledge Base**:  Describe the complexity of each captcha and provide step-by-step instructions for bypassing it.
+
+Bring a changing landscape of CAPTCHA systems into one approachable, maintained reference. The project aims to make the material easier to navigate, compare and cite while keeping responsible, authorized use explicit.
+
+## How to Use the Guide
+
+1. Browse or search the library for the CAPTCHA type you want to understand.
+2. Read its overview and compare the documented approaches, references and limitations.
+3. Keep testing within an environment where you have permission, and respect applicable terms and privacy.
+
+The project brings together a practical, maintainable reference for researchers, developers and curious readers: **identify** common CAPTCHA families and their context, **compare** documented tools and approaches with their trade-offs, and **stay responsible** by prioritizing authorized research, privacy and transparent sourcing.
 
 ## CAPTCHA Identification
 
-Click on any CAPTCHA below to see detailed information, complexity levels, and both free and paid bypass methods.
+Choose a CAPTCHA below to open its guide, review the challenge category and see the references and options documented for it.
 
 |                                                                                            |                                                                                                |                                                                                                  |                                                                                                    |                                                                                          |
 | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
@@ -47,9 +61,19 @@ Click on any CAPTCHA below to see detailed information, complexity levels, and b
 | <img src="assets/images/captchas/lemin.svg" width="160" alt="Lemin">                       | <img src="assets/images/captchas/prosopo-procaptcha.svg" width="160" alt="Prosopo Procaptcha"> | <img src="assets/images/captchas/temu_captcha.svg" width="160" alt="Temu CAPTCHA">               |                                                                                                    |                                                                                          |
 | [**Lemin**](docs/captchas/lemin.md)                                                        | [**Prosopo**](docs/captchas/prosopo.md)                                                        | [**Temu**](docs/captchas/temu.md)                                                                |                                                                                                    |                                                                                          |
 
+## Difficulty Scale
+
+Difficulty labels are editorial estimates for navigating the guide, not guarantees of how a challenge will behave in a particular context.
+
+The five labels are **1 — Low**, **2 — Below average**, **3 — Medium**, **4 — High** and **5 — Very high**.
+
+## Project Structure
+
+The `docs/captchas/` directory contains individual reference pages; `docs/solvers.md` indexes documented tools and services; `docs/resources.md` collects further reading; `assets/images/captchas/` stores catalog illustrations; and `assets/brand/` contains the logo and banner artwork.
+
 ## Useful Links
-- [Bypass Tools](https://github.com/vsmutok/FuckCaptcha/blob/main/docs/solvers.md) - List of tools and services to bypass CAPTCHAs.
-- [Useful Resources](https://github.com/vsmutok/FuckCaptcha/blob/main/docs/resources.md) - Additional resources and articles.
+- [Solver and service index](https://github.com/vsmutok/FuckCaptcha/blob/main/docs/solvers.md) - A directory of documented options.
+- [Research resources](https://github.com/vsmutok/FuckCaptcha/blob/main/docs/resources.md) - Further reading and references.
 
 ### Contributing
 
@@ -57,13 +81,13 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for det
 
 ---
   
-### ⚠️ Disclaimer
+### Disclaimer
   
-This repository is created solely for **educational and research purposes**. Use the knowledge acquired responsibly and respect the terms of use of websites. The authors are not responsible for any misuse of the materials.
+This repository is provided for **educational and authorized research purposes**. Respect applicable law, privacy and the terms of the services you use. The authors are not responsible for misuse of this material.
 
 ---
 
-### ⭐ Star History
+### Star History
   
 If this project was useful to you, give it a star! ⭐
 

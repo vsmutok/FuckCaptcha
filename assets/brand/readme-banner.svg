@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320">
+  <title>FuckCaptcha — the field guide to 38 CAPTCHA types</title>
+  <defs>
+    <linearGradient id="rb-brand" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0066ff"/>
+      <stop offset="1" stop-color="#00a6c4"/>
+    </linearGradient>
+    <linearGradient id="rb-accent" x1="300" y1="0" x2="760" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5b9dff"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <radialGradient id="rb-glow-a" cx="1120" cy="40" r="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5b9dff" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#5b9dff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rb-glow-b" cx="120" cy="320" r="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="rb-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0v32" fill="none" stroke="#1d2b40" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="rb-grid-fade" x1="0" y1="0" x2="1280" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset=".35" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".9"/>
+    </linearGradient>
+    <mask id="rb-grid-mask">
+      <rect width="1280" height="320" fill="url(#rb-grid-fade)"/>
+    </mask>
+    <clipPath id="rb-clip">
+      <rect width="1280" height="320" rx="28"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#rb-clip)">
+    <rect width="1280" height="320" fill="#070b12"/>
+    <rect width="1280" height="320" fill="url(#rb-grid)" mask="url(#rb-grid-mask)"/>
+    <rect width="1280" height="320" fill="url(#rb-glow-a)"/>
+    <rect width="1280" height="320" fill="url(#rb-glow-b)"/>
+
+    <g transform="translate(980 60) rotate(8 100 100)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="200" height="200" rx="28" fill="#0c1421" stroke="#1d2b40" stroke-width="2"/>
+      <g fill="#101b2b">
+        <rect x="16" y="16" width="52" height="52" rx="8"/>
+        <rect x="74" y="16" width="52" height="52" rx="8"/>
+        <rect x="132" y="16" width="52" height="52" rx="8"/>
+        <rect x="16" y="74" width="52" height="52" rx="8"/>
+        <rect x="74" y="74" width="52" height="52" rx="8"/>
+        <rect x="132" y="74" width="52" height="52" rx="8"/>
+        <rect x="16" y="132" width="52" height="52" rx="8"/>
+        <rect x="74" y="132" width="52" height="52" rx="8"/>
+        <rect x="132" y="132" width="52" height="52" rx="8"/>
+      </g>
+      <g stroke="#22d3ee" stroke-width="3">
+        <rect x="74" y="16" width="52" height="52" rx="8"/>
+        <rect x="16" y="74" width="52" height="52" rx="8"/>
+        <rect x="132" y="132" width="52" height="52" rx="8"/>
+      </g>
+      <g stroke="#22d3ee" stroke-width="4">
+        <path d="M88 42l8 8 16-18M30 100l8 8 16-18M146 158l8 8 16-18"/>
+      </g>
+    </g>
+
+    <g transform="translate(64 72) scale(.34375)">
+      <rect width="512" height="512" rx="120" fill="url(#rb-brand)"/>
+      <path d="M188 136 96 256l92 120M324 136l92 120-92 120" fill="none" stroke="#fff" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M206 262l40 40 64-92" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/>
+    </g>
+
+    <text x="282" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" letter-spacing="4" fill="#8bb8ff">OPEN CAPTCHA KNOWLEDGE BASE</text>
+    <text x="278" y="200" font-family="Inter, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="80" font-weight="800" letter-spacing="-2" fill="#e8eefb">Fuck<tspan fill="url(#rb-accent)">Captcha</tspan><tspan fill="#22d3ee">.</tspan></text>
+    <text x="282" y="246" font-family="Inter, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="24" fill="#93a4bd">38 CAPTCHA types · detection signals · free &amp; paid solving paths</text>
+  </g>
+</svg>
