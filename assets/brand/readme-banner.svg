@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320">
-  <title>FuckCaptcha — the field guide to 38 CAPTCHA types</title>
+  <title>FuckCaptcha — the field guide to 39 CAPTCHA types</title>
   <defs>
     <linearGradient id="rb-brand" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
       <stop stop-color="#0066ff"/>
@@ -69,6 +69,6 @@
 
     <text x="282" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" letter-spacing="4" fill="#8bb8ff">OPEN CAPTCHA KNOWLEDGE BASE</text>
     <text x="278" y="200" font-family="Inter, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="80" font-weight="800" letter-spacing="-2" fill="#e8eefb">Fuck<tspan fill="url(#rb-accent)">Captcha</tspan><tspan fill="#22d3ee">.</tspan></text>
-    <text x="282" y="246" font-family="Inter, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="24" fill="#93a4bd">38 CAPTCHA types · detection signals · free &amp; paid solving paths</text>
+    <text x="282" y="246" font-family="Inter, 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="24" fill="#93a4bd">39 CAPTCHA types · detection signals · documented options</text>
   </g>
 </svg>

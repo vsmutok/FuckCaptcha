@@ -125,6 +125,7 @@ For CAPTCHAs that are really bot-management products (Cloudflare, DataDome, Peri
 | GeeTest v3/v4 | PuzzleSolver / OpenCV | 2Captcha |
 | PoW (ALTCHA, Friendly, Cap) | Solve locally (cheap CPU work) | Usually not needed |
 | DataDome / Kasada / HUMAN / Akamai | Full stealth browser + residential IP | Bright Data / ZenRows |
+| ARCaptcha | Use the official widget on a site you own and verify submissions server-side | If a visitor is blocked, contact the site owner for an accessible route or support |
 
 ---
 

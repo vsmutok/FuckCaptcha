@@ -57,9 +57,9 @@
 
   <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="19" fill="#e8eefb">
     <rect x="96" y="452" width="232" height="44" rx="22" fill="#0c1421" stroke="#1d2b40" stroke-width="2"/>
-    <text x="212" y="480" text-anchor="middle"><tspan fill="#22d3ee" font-weight="700">38</tspan> CAPTCHA types</text>
+    <text x="212" y="480" text-anchor="middle"><tspan fill="#22d3ee" font-weight="700">39</tspan> CAPTCHA types</text>
     <rect x="340" y="452" width="220" height="44" rx="22" fill="#0c1421" stroke="#1d2b40" stroke-width="2"/>
-    <text x="450" y="480" text-anchor="middle"><tspan fill="#22d3ee" font-weight="700">24</tspan> risk engines</text>
+    <text x="450" y="480" text-anchor="middle"><tspan fill="#22d3ee" font-weight="700">25</tspan> risk engines</text>
     <rect x="572" y="452" width="200" height="44" rx="22" fill="#0c1421" stroke="#1d2b40" stroke-width="2"/>
     <text x="672" y="480" text-anchor="middle">free <tspan fill="#22d3ee">→</tspan> paid</text>
   </g>

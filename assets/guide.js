@@ -77,7 +77,12 @@
       .map((heading) => {
         const id = heading.id || slugify(heading.textContent);
         heading.id = id;
-        const level = heading.tagName === "H2" ? "toc-h2" : "toc-h3";
+        const level =
+          heading.tagName === "H2"
+            ? "toc-h2"
+            : heading.tagName === "H3"
+              ? "toc-h3"
+              : "toc-h4";
         const label = escapeHtml(heading.textContent.trim());
         return (
           '<li class="' +
@@ -112,8 +117,19 @@
       { rootMargin: "-88px 0px -70% 0px", threshold: 0 }
     );
 
-    document.querySelectorAll(".doc h2, .doc h3").forEach((heading) => {
+    document.querySelectorAll(".doc h2, .doc h3, .doc h4").forEach((heading) => {
       if (heading.id) observer.observe(heading);
+    });
+  }
+
+  function highlightCode() {
+    if (!docEl || !window.hljs) return;
+    docEl.querySelectorAll("pre code").forEach((block) => {
+      try {
+        window.hljs.highlightElement(block);
+      } catch (error) {
+        /* leave the block unhighlighted */
+      }
     });
   }
 
@@ -161,7 +177,7 @@
 
     if (sourceLink) sourceLink.setAttribute("href", REPO + "/blob/main/" + docPath);
 
-    const headings = Array.from(docEl.querySelectorAll("h2, h3"));
+    const headings = Array.from(docEl.querySelectorAll("h2, h3, h4"));
     buildToc(headings);
     watchActiveHeading();
   }
@@ -178,6 +194,7 @@
       const text = await response.text();
       const html = window.marked ? window.marked.parse(text) : escapeHtml(text);
       docEl.innerHTML = html;
+      highlightCode();
       enhance();
 
       const hash = decodeURIComponent(window.location.hash.slice(1));

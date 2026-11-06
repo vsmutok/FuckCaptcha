@@ -49,9 +49,9 @@
 
   <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" fill="#263952">
     <rect x="88" y="466" width="222" height="42" rx="21" fill="#fff" stroke="#d7e1ee" stroke-width="2"/>
-    <text x="199" y="493" text-anchor="middle"><tspan fill="#0066cc" font-weight="700">38</tspan> CAPTCHA types</text>
+    <text x="199" y="493" text-anchor="middle"><tspan fill="#0066cc" font-weight="700">39</tspan> CAPTCHA types</text>
     <rect x="322" y="466" width="208" height="42" rx="21" fill="#fff" stroke="#d7e1ee" stroke-width="2"/>
-    <text x="426" y="493" text-anchor="middle"><tspan fill="#0066cc" font-weight="700">24</tspan> risk engines</text>
+    <text x="426" y="493" text-anchor="middle"><tspan fill="#0066cc" font-weight="700">25</tspan> risk engines</text>
     <rect x="542" y="466" width="206" height="42" rx="21" fill="#fff" stroke="#d7e1ee" stroke-width="2"/>
     <text x="645" y="493" text-anchor="middle">open &amp; paid paths</text>
   </g>

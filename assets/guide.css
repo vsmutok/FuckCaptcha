@@ -1,3 +1,33 @@
+:root {
+  --code-bg: #f6f8fc;
+  --code-line: #d7e1f0;
+  --code-text: #243b53;
+  --code-comment: #6b7f99;
+  --code-keyword: #a626a4;
+  --code-string: #0a7d4f;
+  --code-number: #b45309;
+  --code-function: #0052cc;
+  --code-builtin: #0e7490;
+  --code-attr: #b45309;
+  --code-tag: #0052cc;
+  --code-punct: #5a6b84;
+}
+
+[data-theme="dark"] {
+  --code-bg: #08111f;
+  --code-line: #1d3550;
+  --code-text: #c7d7ec;
+  --code-comment: #6b7f99;
+  --code-keyword: #c792ea;
+  --code-string: #7ee787;
+  --code-number: #ffab70;
+  --code-function: #82aaff;
+  --code-builtin: #22d3ee;
+  --code-attr: #ffab70;
+  --code-tag: #82aaff;
+  --code-punct: #93a4bd;
+}
+
 .guide-main {
   padding: 40px 0 88px;
 }
@@ -195,17 +225,101 @@
   margin: 0 0 20px;
   padding: 16px 18px;
   overflow-x: auto;
-  border: 1px solid #1d3550;
+  border: 1px solid var(--code-line);
   border-radius: 12px;
-  background: #08111f;
+  background: var(--code-bg);
 }
 
 .doc pre code {
   padding: 0;
   background: none;
-  color: #c7d7ec;
+  color: var(--code-text);
   font-size: 12.5px;
   line-height: 1.7;
+}
+
+.doc pre code.hljs {
+  display: block;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-formula {
+  color: var(--code-keyword);
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string {
+  color: var(--code-string);
+}
+
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-variable {
+  color: var(--code-number);
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.function_,
+.hljs-section {
+  color: var(--code-function);
+}
+
+.hljs-built_in,
+.hljs-type,
+.hljs-class .hljs-title {
+  color: var(--code-builtin);
+}
+
+.hljs-attr,
+.hljs-property,
+.hljs-params {
+  color: var(--code-attr);
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: var(--code-tag);
+}
+
+.hljs-meta {
+  color: var(--code-comment);
+}
+
+.hljs-punctuation,
+.hljs-operator {
+  color: var(--code-punct);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 700;
+}
+
+.hljs-deletion {
+  color: #e06c75;
 }
 
 .table-wrap {
@@ -331,6 +445,11 @@
 .toc .toc-h3 a {
   padding-left: 22px;
   font-size: 12px;
+}
+
+.toc .toc-h4 a {
+  padding-left: 34px;
+  font-size: 11.5px;
 }
 
 .toc-mobile {

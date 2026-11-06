@@ -1,7 +1,7 @@
 # FuckCaptcha [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/vsmutok/FuckCaptcha/blob/main/LICENSE)
-![CAPTCHA types: 38](https://img.shields.io/badge/CAPTCHA_types-38-blue.svg)
+![CAPTCHA types: 39](https://img.shields.io/badge/CAPTCHA_types-39-blue.svg)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/vsmutok/FuckCaptcha/blob/main/CONTRIBUTING.md)
 [![GitHub stars](https://img.shields.io/github/stars/vsmutok/FuckCaptcha?style=social)](https://github.com/vsmutok/FuckCaptcha/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/vsmutok/FuckCaptcha)](https://github.com/vsmutok/FuckCaptcha/commits/main)
@@ -9,7 +9,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="assets/brand/readme-banner-light.png">
-  <img src="assets/brand/readme-banner.png" alt="FuckCaptcha — the field guide to 38 CAPTCHA types">
+  <img src="assets/brand/readme-banner.png" alt="FuckCaptcha — the field guide to 39 CAPTCHA types">
 </picture>
 
 **FuckCaptcha** is an open reference for understanding CAPTCHA types, their context and the approaches documented around them. It is intended for education and authorized research, not for evading protections on services without permission.
@@ -58,8 +58,8 @@ Choose a CAPTCHA below to open its guide, review the challenge category and see 
 | [**Amazon**](docs/captchas/amazon.md)                                                      | [**Binance**](docs/captchas/binance.md)                                                        | [**TikTok**](docs/captchas/tiktok.md)                                                            | [**Audio**](docs/captchas/audio.md)                                                                | [**Altcha**](docs/captchas/altcha.md)                                                    |
 | <img src="assets/images/captchas/friendly-captcha.svg" width="160" alt="Friendly CAPTCHA"> | <img src="assets/images/captchas/atbcaptcha.svg" width="160" alt="ATB CAPTCHA">                | <img src="assets/images/captchas/captchafox.svg" width="160" alt="CaptchaFox">                   | <img src="assets/images/captchas/capy.svg" width="160" alt="Capy Puzzle">                          | <img src="assets/images/captchas/cutcaptcha.svg" width="160" alt="CutCaptcha">           |
 | [**Friendly**](docs/captchas/friendly.md)                                                  | [**ATB**](docs/captchas/atbcaptcha.md)                                                         | [**CaptchaFox**](docs/captchas/captchafox.md)                                                    | [**Capy Puzzle**](docs/captchas/capy.md)                                                           | [**CutCaptcha**](docs/captchas/cutcaptcha.md)                                            |
-| <img src="assets/images/captchas/lemin.svg" width="160" alt="Lemin">                       | <img src="assets/images/captchas/prosopo-procaptcha.svg" width="160" alt="Prosopo Procaptcha"> | <img src="assets/images/captchas/temu_captcha.svg" width="160" alt="Temu CAPTCHA">               |                                                                                                    |                                                                                          |
-| [**Lemin**](docs/captchas/lemin.md)                                                        | [**Prosopo**](docs/captchas/prosopo.md)                                                        | [**Temu**](docs/captchas/temu.md)                                                                |                                                                                                    |                                                                                          |
+| <img src="assets/images/captchas/lemin.svg" width="160" alt="Lemin">                       | <img src="assets/images/captchas/prosopo-procaptcha.svg" width="160" alt="Prosopo Procaptcha"> | <img src="assets/images/captchas/temu_captcha.svg" width="160" alt="Temu CAPTCHA">               | <img src="assets/images/captchas/arcaptcha.svg" width="160" alt="ARCaptcha">                       |                                                                                          |
+| [**Lemin**](docs/captchas/lemin.md)                                                        | [**Prosopo**](docs/captchas/prosopo.md)                                                        | [**Temu**](docs/captchas/temu.md)                                                                | [**ARCaptcha**](docs/captchas/arcaptcha.md)                                                        |                                                                                          |
 
 ## Difficulty Scale
 
