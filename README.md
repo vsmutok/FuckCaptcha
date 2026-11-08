@@ -61,6 +61,10 @@ Choose a CAPTCHA below to open its guide, review the challenge category and see 
 | <img src="assets/images/captchas/lemin.svg" width="160" alt="Lemin">                       | <img src="assets/images/captchas/prosopo-procaptcha.svg" width="160" alt="Prosopo Procaptcha"> | <img src="assets/images/captchas/temu_captcha.svg" width="160" alt="Temu CAPTCHA">               | <img src="assets/images/captchas/arcaptcha.svg" width="160" alt="ARCaptcha">                       |                                                                                          |
 | [**Lemin**](docs/captchas/lemin.md)                                                        | [**Prosopo**](docs/captchas/prosopo.md)                                                        | [**Temu**](docs/captchas/temu.md)                                                                | [**ARCaptcha**](docs/captchas/arcaptcha.md)                                                        |                                                                                          |
 
+## Need Help?
+
+If you have trouble solving any type of CAPTCHA, feel free to [open an issue](https://github.com/vsmutok/FuckCaptcha/issues) or email me at [vasyl.smutok@gmail.com](mailto:vasyl.smutok@gmail.com), and I will try to help.
+
 ## Difficulty Scale
 
 Difficulty labels are editorial estimates for navigating the guide, not guarantees of how a challenge will behave in a particular context.
