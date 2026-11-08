@@ -24,31 +24,41 @@
   --lvl-3: #d97706;
   --lvl-4: #ea580c;
   --lvl-5: #dc2626;
+  --focus: #0066ff;
+  --term-bg: #0b1424;
+  --term-bar: #111d31;
+  --term-line: #1f3550;
+  --term-text: #c7d7ec;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #070b12;
-  --bg-elev: #0c1421;
-  --bg-soft: #101b2b;
-  --text: #e8eefb;
-  --muted: #93a4bd;
-  --line: #1d2b40;
-  --accent: #5b9dff;
-  --accent-text: #8bb8ff;
-  --cyan: #22d3ee;
-  --accent-soft: rgba(91, 157, 255, 0.2);
-  --glow-a: rgba(91, 157, 255, 0.2);
-  --glow-b: rgba(34, 211, 238, 0.14);
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
-  --shadow-sm: 0 10px 26px rgba(0, 0, 0, 0.35);
-  --card-media: #f3f8ff;
-  --header: rgba(7, 11, 18, 0.9);
+  --bg: #121826;
+  --bg-elev: #1a2130;
+  --bg-soft: #202839;
+  --text: #eaf0fb;
+  --muted: #a7b6cd;
+  --line: #2d3749;
+  --accent: #6ea8ff;
+  --accent-text: #9dc3ff;
+  --cyan: #38dbf0;
+  --accent-soft: rgba(110, 168, 255, 0.22);
+  --glow-a: rgba(110, 168, 255, 0.18);
+  --glow-b: rgba(56, 219, 240, 0.12);
+  --shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+  --shadow-sm: 0 10px 26px rgba(0, 0, 0, 0.26);
+  --card-media: #eef4fe;
+  --header: rgba(18, 24, 38, 0.86);
   --lvl-1: #4ade80;
   --lvl-2: #60a5fa;
   --lvl-3: #fbbf24;
   --lvl-4: #fb923c;
   --lvl-5: #f87171;
+  --focus: #9dc3ff;
+  --term-bg: #0f1a2b;
+  --term-bar: #16233a;
+  --term-line: #2b3e58;
+  --term-text: #d3e1f4;
 }
 
 *,
@@ -68,12 +78,30 @@ body {
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  accent-color: var(--accent);
+  scrollbar-color: var(--line) transparent;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: var(--accent-soft);
   text-rendering: optimizeLegibility;
 }
 
 a {
   color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
 }
 
 button,
@@ -322,6 +350,7 @@ svg {
   font-weight: 850;
   letter-spacing: -0.055em;
   line-height: 0.98;
+  text-wrap: balance;
 }
 
 .hero h1 span {
@@ -329,6 +358,15 @@ svg {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+@media (forced-colors: active) {
+  .hero h1 span,
+  .notfound .code {
+    background: none;
+    color: CanvasText;
+    forced-color-adjust: none;
+  }
 }
 
 .hero-lede {
@@ -422,9 +460,9 @@ svg {
 
 .terminal {
   overflow: hidden;
-  border: 1px solid #1d3550;
+  border: 1px solid var(--term-line);
   border-radius: 16px;
-  background: #08111f;
+  background: var(--term-bg);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
   transform: rotate(0.6deg);
 }
@@ -434,8 +472,8 @@ svg {
   align-items: center;
   gap: 7px;
   padding: 11px 14px;
-  border-bottom: 1px solid #16283d;
-  background: #0b1727;
+  border-bottom: 1px solid var(--term-line);
+  background: var(--term-bar);
 }
 
 .terminal-bar i {
@@ -468,7 +506,7 @@ svg {
   margin: 0;
   padding: 22px;
   overflow-x: auto;
-  color: #c7d7ec;
+  color: var(--term-text);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12.5px;
   line-height: 1.85;
@@ -519,6 +557,7 @@ svg {
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.1;
+  text-wrap: balance;
 }
 
 .section-head p {
@@ -673,8 +712,8 @@ svg {
 }
 
 .card > a:focus-visible {
-  outline: 3px solid var(--accent-soft);
-  outline-offset: 2px;
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
 }
 
 .card-media {
@@ -685,6 +724,10 @@ svg {
   padding: 12px;
   border-bottom: 1px solid var(--line);
   background: var(--card-media);
+}
+
+[data-theme="dark"] .card-media {
+  box-shadow: inset 0 0 0 1px rgba(18, 24, 38, 0.06);
 }
 
 .card-media img {

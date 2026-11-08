@@ -40,6 +40,43 @@ if (themeToggle) {
   });
 }
 
+/* Last updated stamp: resolved at runtime instead of being hardcoded */
+const lastUpdated = document.querySelector("#last-updated");
+
+if (lastUpdated) {
+  const REPO = "vsmutok/FuckCaptcha";
+
+  const stamp = (date) => {
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return;
+    lastUpdated.dateTime = date.toISOString().slice(0, 10);
+    lastUpdated.textContent = date.toLocaleDateString("en-US", {
+      month: "short",
+      year: "numeric",
+    });
+    lastUpdated.title = date.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
+  /* Immediate fallback: the page's own Last-Modified date. */
+  stamp(new Date(document.lastModified));
+
+  /* Preferred source: the date of the latest commit in the repository. */
+  fetch(`https://api.github.com/repos/${REPO}/commits?per_page=1`, {
+    headers: { Accept: "application/vnd.github+json" },
+  })
+    .then((response) => (response.ok ? response.json() : Promise.reject(response.status)))
+    .then((commits) => {
+      const committed = commits && commits[0] && commits[0].commit.committer.date;
+      if (committed) stamp(new Date(committed));
+    })
+    .catch(() => {
+      /* offline or rate limited: keep the Last-Modified fallback */
+    });
+}
+
 /* Library page: search + filters (only present on index.html) */
 const searchInput = document.querySelector("#captcha-search");
 const cards = Array.from(document.querySelectorAll(".card"));

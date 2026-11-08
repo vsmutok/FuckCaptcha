@@ -14,10 +14,10 @@
 }
 
 [data-theme="dark"] {
-  --code-bg: #08111f;
-  --code-line: #1d3550;
-  --code-text: #c7d7ec;
-  --code-comment: #6b7f99;
+  --code-bg: #0f1a2b;
+  --code-line: #2b3e58;
+  --code-text: #d3e1f4;
+  --code-comment: #8da3bf;
   --code-keyword: #c792ea;
   --code-string: #7ee787;
   --code-number: #ffab70;
