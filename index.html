@@ -58,7 +58,6 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-inner">
         <div>
-          <img class="hero-logo" src="assets/brand/logo-mark.png" alt="" width="64" height="64">
           <p class="eyebrow">Open CAPTCHA knowledge base</p>
           <h1 id="hero-title">Every CAPTCHA has a <span>weak spot.</span></h1>
           <p class="hero-lede">39 challenge types, documented with context, integration details, and responsible-use guidance.</p>
@@ -76,6 +75,7 @@
           </div>
         </div>
 
+        <div class="hero-visual">
         <div class="terminal" aria-label="Example field notes">
           <div class="terminal-bar" aria-hidden="true">
             <i></i><i></i><i></i>
@@ -91,7 +91,17 @@
 
 <span class="dim"># verify every assumption before scaling</span></code></pre>
         </div>
+          <div class="verify-chip" aria-hidden="true">
+            <span class="verify-box"><svg viewBox="0 0 16 16" fill="none"><path d="m3.5 8.4 3 3 6-6.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="verify-label">I’m not a robot</span>
+            <span class="verify-status">verified</span>
+          </div>
+        </div>
       </div>
+      <a class="scroll-cue" href="#library">
+        Explore the library
+        <span class="scroll-cue-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M8 3v9M4 8.5 8 12.5 12 8.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
     </section>
 
     <section class="section" id="library" aria-labelledby="library-title">
@@ -848,17 +858,17 @@
         </div>
         <div class="work-steps">
           <article class="work-step">
-            <span>01 / IDENTIFY</span>
+            <span class="step"><b>01</b>Identify</span>
             <h3>Recognize what you’re seeing</h3>
             <p>Browse concise profiles of CAPTCHA types, their common formats and the signals that distinguish them.</p>
           </article>
           <article class="work-step">
-            <span>02 / COMPARE</span>
+            <span class="step"><b>02</b>Compare</span>
             <h3>Review the available paths</h3>
             <p>Explore documented open-source projects and service options, with practical trade-offs called out.</p>
           </article>
           <article class="work-step">
-            <span>03 / USE RESPONSIBLY</span>
+            <span class="step"><b>03</b>Use responsibly</span>
             <h3>Keep permission in scope</h3>
             <p>Use this reference for learning and authorized testing; respect privacy, site rules and applicable law.</p>
           </article>
@@ -885,16 +895,19 @@
         </div>
         <div class="principles">
           <article class="principle">
+            <div class="principle-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="6" cy="5.5" r="2.2" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="18.5" r="2.2" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="8" r="2.2" stroke="currentColor" stroke-width="1.7"/><path d="M6 7.7v8.6M18 10.2c0 4-5.5 3.3-11.2 6.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
             <span>01 / FREE FIRST</span>
             <h3>Start with open tools</h3>
             <p>Every page begins with open-source libraries and practical browser methods before it mentions a paid service.</p>
           </article>
           <article class="principle">
+            <div class="principle-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 5 5M7.8 10.6h1.6l1-2.4 1.6 4.6 1-2.2h1.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <span>02 / IDENTIFY FIRST</span>
             <h3>Read the signals</h3>
             <p>Network requests, cookies and injected scripts reveal more than the screenshot. Identify the vendor before writing code.</p>
           </article>
           <article class="principle">
+            <div class="principle-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 5 5.8v5.4c0 4.3 2.9 7.9 7 9.3 4.1-1.4 7-5 7-9.3V5.8L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.8 12 2.2 2.2 4.3-4.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <span>03 / STAY ETHICAL</span>
             <h3>Respect the target</h3>
             <p>Use this material for education and authorised testing. Honour terms of service, rate limits and privacy.</p>
@@ -934,7 +947,6 @@
           <a href="https://github.com/vsmutok/FuckCaptcha/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
         </nav>
       </div>
-      <p class="footer-note">Educational and research use only. Respect terms of service, rate limits and privacy.</p>
     </div>
   </footer>
 

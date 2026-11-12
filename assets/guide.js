@@ -72,6 +72,155 @@
       .replace(/\s+/g, "-");
   }
 
+  const EMOJI_PREFIX = /^[\p{Extended_Pictographic}\uFE0F\u200D\s]+/u;
+  const cleanLabel = (text) => text.replace(EMOJI_PREFIX, "").trim();
+
+  /* The library on index.html is the single source of truth for titles,
+     illustrations, categories and difficulty. */
+  async function loadCatalog() {
+    try {
+      const response = await fetch("index.html", { cache: "no-cache" });
+      if (!response.ok) return [];
+      const page = new DOMParser().parseFromString(await response.text(), "text/html");
+      return Array.from(page.querySelectorAll("#captcha-grid .card")).map((card) => {
+        const link = card.querySelector("a[href]");
+        const href = link ? link.getAttribute("href") : "";
+        const doc = (href.split("doc=")[1] || "").split("#")[0];
+        const tag = card.querySelector(".tag");
+        const level = card.querySelector(".level");
+        const img = card.querySelector("img");
+        return {
+          doc,
+          href,
+          title: (card.querySelector("h3") || {}).textContent || "",
+          summary: (card.querySelector("p") || {}).textContent || "",
+          image: img ? img.getAttribute("src") : "",
+          tagClass: tag ? tag.className : "",
+          tagText: tag ? tag.textContent.trim() : "",
+          level: level ? level.dataset.level : "",
+          levelText: level ? level.textContent.trim() : "",
+        };
+      });
+    } catch (error) {
+      return [];
+    }
+  }
+
+  /* One pager entry per markdown file, in library order. */
+  function pagerEntries(catalog) {
+    const byDoc = new Map();
+    catalog.forEach((entry) => {
+      if (!entry.doc) return;
+      if (!byDoc.has(entry.doc)) {
+        byDoc.set(entry.doc, { doc: entry.doc, titles: [entry.title] });
+      } else {
+        byDoc.get(entry.doc).titles.push(entry.title);
+      }
+    });
+    return Array.from(byDoc.values()).map((item) => ({
+      doc: item.doc,
+      title: item.titles.length > 1 ? item.titles[0].split(" ")[0] : item.titles[0],
+    }));
+  }
+
+  function renderHero(entry, title) {
+    if (!title) return;
+    const hero = document.createElement("header");
+    hero.className = "doc-hero" + (entry && entry.image ? " has-media" : "");
+
+    const text = document.createElement("div");
+    text.className = "doc-hero-text";
+    if (entry) {
+      const meta = document.createElement("div");
+      meta.className = "doc-hero-meta";
+      meta.innerHTML =
+        '<span class="' + escapeHtml(entry.tagClass) + '">' + escapeHtml(entry.tagText) + "</span>" +
+        '<span class="level" data-level="' + escapeHtml(entry.level) + '">' +
+        escapeHtml(entry.levelText) + " difficulty</span>";
+      text.appendChild(meta);
+    } else {
+      const kicker = document.createElement("span");
+      kicker.className = "doc-kicker";
+      kicker.textContent = "Field guide reference";
+      text.appendChild(kicker);
+    }
+    title.parentNode.insertBefore(hero, title);
+    text.appendChild(title);
+    hero.appendChild(text);
+
+    if (entry && entry.image) {
+      const media = document.createElement("div");
+      media.className = "doc-hero-media";
+      media.innerHTML = '<img src="' + escapeHtml(entry.image) + '" alt="" width="320" height="160">';
+      hero.appendChild(media);
+    }
+  }
+
+  function renderPager(entries) {
+    if (!docEl) return;
+    const index = entries.findIndex((entry) => entry.doc === docPath);
+    if (index === -1) return;
+    const prev = entries[(index - 1 + entries.length) % entries.length];
+    const next = entries[(index + 1) % entries.length];
+    const link = (entry, dir) =>
+      '<a class="pager-link pager-' + dir + '" href="guide.html?doc=' + escapeHtml(entry.doc) + '">' +
+      '<span class="pager-label">' + (dir === "prev" ? "&larr; Previous" : "Next &rarr;") + "</span>" +
+      '<span class="pager-title">' + escapeHtml(entry.title) + "</span></a>";
+    const nav = document.createElement("nav");
+    nav.className = "pager";
+    nav.setAttribute("aria-label", "More CAPTCHA guides");
+    nav.innerHTML = link(prev, "prev") + link(next, "next");
+    docEl.appendChild(nav);
+  }
+
+  function addCopyButtons() {
+    if (!docEl || !navigator.clipboard) return;
+    docEl.querySelectorAll("pre").forEach((pre) => {
+      const code = pre.querySelector("code");
+      if (!code) return;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "code-copy";
+      button.textContent = "Copy";
+      button.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(code.innerText);
+          button.textContent = "Copied";
+          button.classList.add("is-done");
+        } catch (error) {
+          button.textContent = "Failed";
+        }
+        window.setTimeout(() => {
+          button.textContent = "Copy";
+          button.classList.remove("is-done");
+        }, 1500);
+      });
+      pre.classList.add("has-copy");
+      pre.appendChild(button);
+    });
+  }
+
+  function trackProgress() {
+    const bar = document.getElementById("read-progress");
+    if (!bar || !docEl) return;
+    let queued = false;
+    const update = () => {
+      queued = false;
+      const rect = docEl.getBoundingClientRect();
+      const total = rect.height - window.innerHeight + 120;
+      const done = Math.min(1, Math.max(0, (120 - rect.top) / Math.max(total, 1)));
+      bar.style.transform = "scaleX(" + done.toFixed(4) + ")";
+    };
+    const schedule = () => {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    update();
+  }
+
   function buildToc(headings) {
     const items = headings
       .map((heading) => {
@@ -83,7 +232,7 @@
             : heading.tagName === "H3"
               ? "toc-h3"
               : "toc-h4";
-        const label = escapeHtml(heading.textContent.trim());
+        const label = escapeHtml(cleanLabel(heading.textContent));
         return (
           '<li class="' +
           level +
@@ -117,7 +266,7 @@
       { rootMargin: "-88px 0px -70% 0px", threshold: 0 }
     );
 
-    document.querySelectorAll(".doc h2, .doc h3, .doc h4").forEach((heading) => {
+    document.querySelectorAll(".doc h2, .doc h3").forEach((heading) => {
       if (heading.id) observer.observe(heading);
     });
   }
@@ -133,7 +282,7 @@
     });
   }
 
-  function enhance() {
+  function enhance(catalog) {
     if (!docEl) return;
     const baseDir = docPath.split("/").slice(0, -1).join("/");
 
@@ -171,15 +320,25 @@
     }
 
     const title = docEl.querySelector("h1");
-    const headingText = title ? title.textContent.trim() : "Guide";
+    const headingText = title ? cleanLabel(title.textContent) : "Guide";
+    const entry = catalog.find((item) => item.doc === docPath);
+    renderHero(entry, title);
+    const lede = docEl.querySelector(".doc-hero + p");
+    if (lede) lede.classList.add("doc-lede");
+    const tocMobile = document.querySelector(".toc-mobile");
+    const anchor = lede || docEl.querySelector(".doc-hero");
+    if (tocMobile && anchor) anchor.after(tocMobile);
     document.title = headingText + " — FuckCaptcha";
     if (crumbEl) crumbEl.textContent = headingText;
 
     if (sourceLink) sourceLink.setAttribute("href", REPO + "/blob/main/" + docPath);
 
-    const headings = Array.from(docEl.querySelectorAll("h2, h3, h4"));
+    const headings = Array.from(docEl.querySelectorAll("h2, h3"));
     buildToc(headings);
     watchActiveHeading();
+    addCopyButtons();
+    renderPager(pagerEntries(catalog));
+    trackProgress();
   }
 
   async function load() {
@@ -189,13 +348,16 @@
     }
 
     try {
-      const response = await fetch(docPath, { cache: "no-cache" });
+      const [response, catalog] = await Promise.all([
+        fetch(docPath, { cache: "no-cache" }),
+        loadCatalog(),
+      ]);
       if (!response.ok) throw new Error("HTTP " + response.status);
       const text = await response.text();
       const html = window.marked ? window.marked.parse(text) : escapeHtml(text);
       docEl.innerHTML = html;
       highlightCode();
-      enhance();
+      enhance(catalog);
 
       const hash = decodeURIComponent(window.location.hash.slice(1));
       if (hash) {
