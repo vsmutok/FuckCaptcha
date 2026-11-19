@@ -31,6 +31,7 @@ A curated list of articles, papers, vendor documentation and projects about CAPT
 - [Puppeteer Stealth](https://github.com/berstend/puppeteer-extra/tree/master/packages/puppeteer-extra-plugin-stealth) — stealth plugin for Node.js
 - [hcaptcha-challenger](https://github.com/QIN2DIM/hcaptcha-challenger) — hCaptcha solving framework
 - [Puzzle-Captcha-Solver](https://github.com/vsmutok/Puzzle-Captcha-Solver) — GeeTest/DataDome slider solver
+- [Parse Everything](https://github.com/zenkdom/parse-everything-global) — anti-bot bypass API & web extraction engine with Playwright stealth and TLS impersonation
 
 ## 🎓 Learning Materials
 
