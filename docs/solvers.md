@@ -91,6 +91,7 @@ Token services solve the challenge on their infrastructure and return a token/an
 | [**NopeCHA**](https://www.nopecha.com/) | Turnstile, reCAPTCHA, hCaptcha | subscription | Extension + API |
 | [**SadCaptcha**](https://sadcaptcha.com/) | TikTok/Temu-specific puzzles | varies | Specialised, not general-purpose |
 | [**NoneCap**](https://nonecap.com/) | hCaptcha, including Enterprise | varies | hCaptcha-only token API; SDKs for Node.js and Python |
+| [**Kaptra**](https://kaptra.ai/) | DataDome, reCAPTCHA, Turnstile | ~$0.3–1 per 1K | Fast, usage-based API; pay only for successful tasks |
 
 ### 🌐 Unblocker / Browser APIs
 
